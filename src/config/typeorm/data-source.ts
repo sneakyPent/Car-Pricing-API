@@ -11,32 +11,32 @@ const generalDataSourceOptions = {
   migrations: [__dirname + '/../migrations/*.ts'],
 };
 
-export const developmentDataSourceOptions: DataSourceOptions = {
+const developmentDataSourceOptions: DataSourceOptions = {
   ...generalDataSourceOptions,
   type: 'sqlite',
   entities: ['**/*.entity.js'],
 };
 
-export const testDataSourceOptions: DataSourceOptions = {
+const testDataSourceOptions: DataSourceOptions = {
   ...generalDataSourceOptions,
   type: 'sqlite',
   entities: ['**/*.entity.ts'],
   migrationsRun: true,
 };
 
-export const prodDataSourceOptions: DataSourceOptions = {
+const prodDataSourceOptions: DataSourceOptions = {
   ...generalDataSourceOptions,
   type: 'sqlite',
   entities: ['**/*.entity.ts'],
   migrationsRun: true,
 };
 
-const sourceForExport =
+export const datasourceOptions =
   process.env.NODE_ENV === 'development'
     ? developmentDataSourceOptions
     : process.env.NODE_ENV === 'test'
       ? testDataSourceOptions
       : process.env.NODE_ENV === 'prod' && prodDataSourceOptions;
 
-const dataSource = new DataSource(sourceForExport);
+const dataSource = new DataSource(datasourceOptions);
 export default dataSource;
