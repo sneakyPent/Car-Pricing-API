@@ -1,6 +1,7 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
+import * as process from 'node:process';
 
 const envFile = path.resolve(`.env.${process.env.NODE_ENV}`);
 dotenv.config({ path: envFile });
@@ -26,8 +27,9 @@ const testDataSourceOptions: DataSourceOptions = {
 
 const prodDataSourceOptions: DataSourceOptions = {
   ...generalDataSourceOptions,
-  type: 'sqlite',
-  entities: ['**/*.entity.ts'],
+  type: 'postgres',
+  url: process.env.DATABASE_URL,
+  entities: ['**/*.entity.js'],
   migrationsRun: true,
 };
 
