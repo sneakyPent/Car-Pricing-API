@@ -27,10 +27,16 @@ const testDataSourceOptions: DataSourceOptions = {
 
 const prodDataSourceOptions: DataSourceOptions = {
   ...generalDataSourceOptions,
-  type: 'postgres',
-  url: process.env.DATABASE_URL,
+  database: process.env.DATABASE_NAME,
   entities: ['**/*.entity.js'],
+  host: process.env.DATABASE_HOST,
+  logging: true,
   migrationsRun: true,
+  password: process.env.DATABASE_PASSWORD,
+  port: parseInt(process.env.DATABASE_PORT),
+  synchronize: true,
+  type: 'postgres',
+  username: process.env.DATABASE_USERNAME,
 };
 
 export const datasourceOptions =
