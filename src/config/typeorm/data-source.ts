@@ -27,16 +27,17 @@ const testDataSourceOptions: DataSourceOptions = {
 
 const prodDataSourceOptions: DataSourceOptions = {
   ...generalDataSourceOptions,
-  database: process.env.DATABASE_NAME,
-  entities: ['**/*.entity.js'],
-  host: process.env.DATABASE_HOST,
-  logging: true,
-  migrationsRun: true,
-  password: process.env.DATABASE_PASSWORD,
-  port: parseInt(process.env.DATABASE_PORT),
-  synchronize: true,
   type: 'postgres',
+  host: process.env.DATABASE_HOST,
+  port: parseInt(process.env.DATABASE_PORT),
   username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  logging: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+  migrationsRun: true,
+  entities: ['**/*.entity.js'],
 };
 
 export const datasourceOptions =
