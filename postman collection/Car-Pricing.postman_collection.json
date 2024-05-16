@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "c209dce8-c16f-4f30-b3d4-4eba8ba05874",
+		"name": "Car-Pricing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23520269"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/auth/whoami",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"auth",
+								"whoami"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users By Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/auth?email=user@test.com",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"auth"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user@test.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/auth/1",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"auth",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User By Id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"create.user@test.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/auth/1",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"auth",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/auth/1",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"auth",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"user@test.com\",\n    \"password\": \"test1234\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/auth/signup",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Out",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"user2@test.com\",\n    \"password\": \"test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/auth/signout",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"auth",
+								"signout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"user@test.com\",\n    \"password\": \"test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/auth/signin",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Create report",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"make\":\"BMW\",\n    \"model\":\"X5\",\n    \"price\":25000,\n    \"year\":2008,\n    \"lng\": 25,\n    \"lat\": 35,\n    \"mileage\":103540\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/reports",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve report",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"approved\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/reports/1",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"reports",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disapprove report",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"approved\": false\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/reports/1",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"reports",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get estimate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/reports?make=BMW&model=X5&lng=25&lat=35&mileage=70000&year=2008",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"reports"
+							],
+							"query": [
+								{
+									"key": "make",
+									"value": "BMW"
+								},
+								{
+									"key": "model",
+									"value": "X5"
+								},
+								{
+									"key": "lng",
+									"value": "25"
+								},
+								{
+									"key": "lat",
+									"value": "35"
+								},
+								{
+									"key": "mileage",
+									"value": "70000"
+								},
+								{
+									"key": "year",
+									"value": "2008"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
